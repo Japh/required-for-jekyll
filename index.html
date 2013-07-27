@@ -20,7 +20,7 @@ tags: [Satellite, web development, WordPress, Jekyll, theme development, JavaScr
         <span class="post-date">
             {{ post.date | date: "%B %e, %Y" }}
         </span><!-- /.post-date -->
-          {% if site.disqus_shortname and page.comments %}
+          {% if site.disqus_shortname and post.comments %}
           |
           <span class="comment-link">
             <i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a>
