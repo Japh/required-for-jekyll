@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+
+    <div id="wrapper" class="clearfix">
+
+      <aside id="sidebar" class="animated fadeInLeft">
+
+        <header id="masthead">
+
+          <div class="bio-pic">
+            <a href="{{ site.url }}">
+              <img alt="" src="{{site.url}}/images/{{ site.owner.avatar }}" class="avatar avatar-80 photo" height="80" width="80">
+            </a>
+          </div><!--/ bio-pic -->
+
+          <hgroup>
+            <h1 class="site-title"><a href="{{ site.url }}" >{{ site.title }}</a></h1>
+            <h2 class="site-description">{{ site.description }}</h2>
+          </hgroup>
+
+        </header><!-- /#masthead -->
+
+        <nav id="navigation">
+            {% include navigation.html %}
+        </nav><!-- /#navigation -->
+
+      </aside><!-- /#sidebar -->
+
+      <div id="main">
+
+        <article class="post type-post status-publish format-standard sticky hentry category-aciform category-cat-a category-cat-b category-cat-c category-sub tag-tag1 tag-tag2 tag-tag3 clearfix">
+
+          <header>
+              <h1 class="entry-title">
+                <a href="{{ site.url }}{{ page.url }}">
+                  {{ page.title }}
+                </a>
+              </h1><!-- /.entry-title -->
+
+            <div class="post-meta">
+              <span class="post-date">
+                  {{ page.date | date: "%B %e, %Y" }}
+              </span><!-- /.post-date -->
+                {% if site.disqus_shortname and page.comments %}
+                |
+                <span class="comment-link">
+                  <i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a>
+                </span>
+                {% endif %}
+            </div><!-- /.post-meta -->
+
+          </header>
+
+          {% if page.image.feature %}
+          <figure class="featured-image">
+            <img width="480" height="396" src="{{ site.url }}/images/{{ page.image.feature }}" class="attachment-post-thumbnail wp-post-image" alt="{{ page.title }}">
+          </figure><!-- /.featured-image -->
+          {% endif %}
+
+          <div class="entry-content clearfix">
+
+            {{ content }}
+
+          </div><!-- /.entry-content -->
+
+          <footer class="post-footer">
+            {% if page.tags != empty %}
+            <span class="tag-links">
+              Tagged
+              {% for tag in page.tags %}<a href="{{ site.url }}/tags.html#{{ tag | cgi_encode }}" title="Posts tagged {{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+            </span>
+            {% endif %}
+          </footer>
+        </article>
+
+        <nav id="secondary-nav" class="clearfix" role="pagenavigation">
+
+          {% if page.previous %}
+          <div class="nav-previous">
+            <span class="meta-nav">←</span> <a href="{{ site.url }}{{ page.previous.url }}" rel="prev">{{ page.previous.title }}</a>
+          </div><!-- /.nav-previous -->
+          {% endif %}
+
+          {% if page.next %}
+          <div class="nav-next">
+            <a href="{{ site.url }}{{ page.next.url }}" rel="next">{{ page.next.title }}</a> <span class="meta-nav">→</span>
+          </div><!-- /.nav-next -->
+          {% endif %}
+        
+        </nav>
+
+        {% if site.disqus_shortname and page.comments %}<div id="disqus_thread"></div><!-- /#disqus_thread -->{% endif %}
+
+      </div>
+
+    </div><!-- /#wrapper -->
+
+    <footer id="site-footer" role="contentinfo">
+      {% include footer.html %}
+    </footer><!-- /#site-footer -->
+    {% include scripts.html %}
+  </body>
+</html>

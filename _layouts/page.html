@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+
+    <div id="wrapper" class="clearfix">
+
+      <aside id="sidebar" class="animated fadeInLeft">
+
+        <header id="masthead">
+
+          <div class="bio-pic">
+            <a href="{{ site.url }}">
+              <img alt="" src="{{site.url}}/images/{{ site.owner.avatar }}" class="avatar avatar-80 photo" height="80" width="80">
+            </a>
+          </div><!--/ bio-pic -->
+
+          <hgroup>
+            <h1 class="site-title"><a href="{{ site.url }}" >{{ site.title }}</a></h1>
+            <h2 class="site-description">{{ site.description }}</h2>
+          </hgroup>
+
+        </header><!-- /#masthead -->
+
+        <nav id="navigation">
+            {% include navigation.html %}
+        </nav><!-- /#navigation -->
+
+      </aside><!-- /#sidebar -->
+
+      <div id="main">
+        {{ content }}
+      </div>
+
+    </div><!-- /#wrapper -->
+
+    <footer id="site-footer" role="contentinfo">
+      {% include footer.html %}
+    </footer><!-- /#site-footer -->
+    {% include scripts.html %}
+  </body>
+</html>

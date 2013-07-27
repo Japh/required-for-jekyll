@@ -1,0 +1,1 @@
+(function(e){"use strict";e(function(){e(".entry-content, .comment-body").fitVids()})})(jQuery);

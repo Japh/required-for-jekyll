@@ -1,0 +1,7 @@
+<div class="menu">
+  <ul>
+    {% for link in site.links %}
+    <li class="page_item"><a href="{% if link.external %}{{ link.url }}{% else %}{{ site.url }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
