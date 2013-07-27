@@ -2,7 +2,7 @@ title:            Required for Jekyll
 description:      A WordPress theme converted for Jekyll
 disqus_shortname: required
 #Comment out url when working locally to resolve base urls correctly
-#url:              http://japh.github.io/required-for-jekyll/
+url:              http://japh.github.io/required-for-jekyll/
 
 # Owner/author information
 owner:
