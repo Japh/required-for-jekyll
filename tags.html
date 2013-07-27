@@ -1,35 +1,60 @@
 ---
 layout: page
-title: Tag Index
+title: Tags
+permalink: /tags/index.html
 description: "An archive of posts sorted by tag."
 ---
 
-<ul class="tag-box inline">
-{% assign tags_list = site.tags %}  
-  {% if tags_list.first[0] == null %}
-    {% for tag in tags_list %} 
-    	<li><a href="#{{ tag }}">{{ tag }} <span>{{ site.tags[tag].size }}</span></a></li>
-    {% endfor %}
-  {% else %}
-    {% for tag in tags_list %} 
-    	<li><a href="#{{ tag[0] }}">{{ tag[0] }} <span>{{ tag[1].size }}</span></a></li>
-    {% endfor %}
-  {% endif %}
-{% assign tags_list = nil %}
-</ul>
+{% for tag in site.tags %}
+  <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+  {% assign pages_list = tag[1] %}  
+  {% for post in pages_list %}
+    {% if post.title != null %}
+    {% if group == null or group == post.group %}
 
-{% for tag in site.tags %} 
-	<h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
-	<ul class="post-list">
-		{% assign pages_list = tag[1] %}  
-		{% for post in pages_list %}
-			{% if post.title != null %}
-			{% if group == null or group == post.group %}
-			<li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time></span></a></li>
-			{% endif %}
-			{% endif %}
-		{% endfor %}
-		{% assign pages_list = nil %}
-		{% assign group = nil %}
-	</ul>
+<article class="post type-post status-publish format-standard hentry clearfix">
+
+  <figure class="featured-image col1">
+
+    <a href="{{ site.url }}{{ post.url }}"><img src="{% if post.image.feature %}{{ site.url }}/images/{{ post.image.feature }}{% else %}{{ site.url }}/images/default.jpg{% endif %}" alt="{{ post.title }}"></a>
+
+  </figure><!-- /.featured-image -->
+
+  <div class="col2">
+
+    <header>
+
+      <h1 class="entry-title">
+        <a href="{{ site.url }}{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h1><!-- /.entry-title -->
+
+      <div class="post-meta">
+        <span class="post-date">
+          {{ post.date | date: "%B %e, %Y" }}
+        </span><!-- /.post-date -->
+        {% if site.disqus_shortname and post.comments %}
+        |
+        <span class="comment-link">
+          <a href="#disqus_thread">Comment</a>
+        </span><!-- /.comment-link -->
+        {% endif %}
+      </div><!-- /.post-meta -->
+
+    </header>
+
+    <div class="entry-content clearfix">
+      {{ post.excerpt }}
+    </div><!--/ .entry-content -->
+
+  </div><!--/ col2 -->
+
+</article>
+
+    {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% assign pages_list = nil %}
+  {% assign group = nil %}
 {% endfor %}
