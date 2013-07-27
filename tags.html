@@ -7,6 +7,7 @@ description: "An archive of posts sorted by tag."
 
 {% for tag in site.tags %}
   <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+  <hr />
   {% assign pages_list = tag[1] %}  
   {% for post in pages_list %}
     {% if post.title != null %}
