@@ -1,9 +1,9 @@
 title:            Required for Jekyll
 description:      A WordPress theme converted for Jekyll
 logo:             site-logo.png
-disqus_shortname: 
+disqus_shortname: required
 #Comment out url when working locally to resolve base urls correctly
-url:              http://required.dev
+url:              http://japh.com.au/required
 
 # Owner/author information
 owner:
