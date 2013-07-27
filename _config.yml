@@ -3,24 +3,13 @@ description:      A WordPress theme converted for Jekyll
 logo:             site-logo.png
 disqus_shortname: required
 #Comment out url when working locally to resolve base urls correctly
-url:              http://japh.com.au/required
+url:              http://japh.github.io/required-for-jekyll/
 
 # Owner/author information
 owner:
   name:           Japh
   avatar:         bio-photo.jpg
   email:          japh@satellitedev.com
-  # Social networking links used in footer. Update and remove as you like.
-  twitter:        Japh
-  facebook:       
-  github:         Japh
-  stackexchange:  http://stackexchange.com/users/104048/japh
-  linkedin:       japheth
-  instagram:      japh
-  flickr:         japhie
-  tumblr:         
-  # For Google Authorship https://plus.google.com/authorship
-  google_plus:    
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:   
