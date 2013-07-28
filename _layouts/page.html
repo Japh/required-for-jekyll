@@ -31,7 +31,32 @@
       </aside><!-- /#sidebar -->
 
       <div id="main">
-        {{ content }}
+
+        <article class="post type-post status-publish format-standard sticky hentry clearfix">
+
+          <header>
+              <h1 class="entry-title">
+                <a href="{{ site.url }}{{ page.url }}">
+                  {{ page.title }}
+                </a>
+              </h1><!-- /.entry-title -->
+
+          </header>
+
+          {% if page.image.feature %}
+          <figure class="featured-image">
+            <img width="480" height="396" src="{{ site.url }}/images/{{ page.image.feature }}" class="attachment-post-thumbnail wp-post-image" alt="{{ page.title }}">
+          </figure><!-- /.featured-image -->
+          {% endif %}
+
+          <div class="entry-content clearfix">
+
+            {{ content }}
+
+          </div><!-- /.entry-content -->
+
+        </article>
+
       </div>
 
     </div><!-- /#wrapper -->
