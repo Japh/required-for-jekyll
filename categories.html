@@ -1,0 +1,61 @@
+---
+layout: page
+title: Categories
+permalink: /categories/index.html
+description: "An archive of posts sorted by category."
+---
+
+{% for category in site.categories %}
+  <h2 id="{{ category[0] }}">{{ category[0] }}</h2>
+  <hr />
+  {% assign pages_list = category[1] %}  
+  {% for post in pages_list %}
+    {% if post.title != null %}
+    {% if group == null or group == post.group %}
+
+<article class="post type-post status-publish format-standard hentry clearfix">
+
+  <figure class="featured-image col1">
+
+    <a href="{{ site.url }}{{ post.url }}"><img src="{% if post.image.feature %}{{ site.url }}/images/{{ post.image.feature }}{% else %}{{ site.url }}/images/default.jpg{% endif %}" alt="{{ post.title }}"></a>
+
+  </figure><!-- /.featured-image -->
+
+  <div class="col2">
+
+    <header>
+
+      <h1 class="entry-title">
+        <a href="{{ site.url }}{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h1><!-- /.entry-title -->
+
+      <div class="post-meta">
+        <span class="post-date">
+          {{ post.date | date: "%B %e, %Y" }}
+        </span><!-- /.post-date -->
+        {% if site.disqus_shortname and post.comments %}
+        |
+        <span class="comment-link">
+          <a href="#disqus_thread">Comment</a>
+        </span><!-- /.comment-link -->
+        {% endif %}
+      </div><!-- /.post-meta -->
+
+    </header>
+
+    <div class="entry-content clearfix">
+      {{ post.excerpt }}
+    </div><!--/ .entry-content -->
+
+  </div><!--/ col2 -->
+
+</article>
+
+    {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% assign pages_list = nil %}
+  {% assign group = nil %}
+{% endfor %}
